@@ -1,77 +1,89 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <program3functions.h>
-
+#include "program3functions.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-	ifstream fileIn;
-	char c;
-	int count[26] = { 0 };
-	int max = 0;
-	int min = 0;
-	string maxString;
-	string minString;
-	
-	fileIn.open(argv[1]);
-	
-	// Read characters from file and count the frequency of each character
-	while (fileIn >> c)
-	{
-		if (isalpha(c))
-		{
-			c = tolower(c);
-			count[c - 'a']++;
-		}
-	}
-	
-	// Find the max and min character frequencies
-	max = findMax(count);
-	min = findMin(count);
-	
-	// Check for all characters with the max frequency
-	for (int i = 0; i < 26; i++)
-	{
-		if (count[i] == max)
-		{
-			maxString += char(i + 'a') + ", ";
-		}
-	}
-	
-	// Check for all characters with the min frequency
-	for (int i = 0; i < 26; i++)
-	{
-		if (count[i] == min)
-		{
-			minString += char(i + 'a');
-		}
-	}
-	
-	// Print the results
-	cout << "The input file reads as follows:" << endl << endl;
-	while (fileIn >> c)
-	{
-		cout << c;
-	}
-	cout << endl << endl;
-	
-	cout << "Highest frequency character (appeared " << max << " times in the file): " << maxString << endl;
-	cout << "Lowest frequency characters (appeared " << min << " time in the file): " << minString << endl << endl;
-	
-	
-    // Print the character frequency list
-    for (int i = 0; i < 26; i++)
+    ifstream fileIn;
+    char c;
+    int count[26] = { 0 };
+    string maxString;
+    string minString;
+
+    fileIn.open(argv[1]);
+
+    // Read characters from file and count the frequency of each character
+    while (fileIn >> c)
     {
-        if (count[i] > 0)
+        // checks if the code is uppercase and sets it to lower case
+        if (isalpha(c))
         {
-            cout << char(i + 'a') << ": " << count[i] << endl;
+            c = tolower(c);
+            count[c - 'a']++;
         }
     }
 
-    // Print the histogram
+    // Close input file
+    fileIn.close();
+
+    // Find the highest and lowest frequency characters
+    int max = findMax(count);
+    int min = findMin(count);
+
+    // Output highest frequency characters
+    cout << "Highest frequency characters (appeared " << max << " times in the file): ";
+    int numMax = 0;
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == max )
+        {
+            numMax++;
+            cout << (char)(i + 'a') ;
+            if (numMax < findNumChars(max, count))
+        {
+            cout << ", ";
+        }
+        } 
+    }
+    cout << endl;
+
+    // Output lowest frequency characters
+    cout << "Lowest frequency characters (appeared " << min << " time(s) in the file): ";
+    int lastMinIndex = -1;
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == min)
+        {
+            lastMinIndex = i;
+        }
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == min)
+        {
+            if (i == lastMinIndex && i != 0)
+            {
+                cout << "and ";
+            }
+            cout << (char)(i + 'a');
+            if (i != lastMinIndex)
+            {
+                cout << ", ";
+            }
+        }
+    }
+    cout << endl;
+
+    // Output frequency of each character
+    for (int i = 0; i < 26; i++)
+    {
+        cout << (char)(i + 'a') << ": " << count[i] << endl;
+    }
+
+    // Print the histogram so that there are stars over the letters
     cout << endl;
     for (int i = max; i > 0; i--)
     {
@@ -97,6 +109,7 @@ int main(int argc, char *argv[])
     cout << endl;
 
     fileIn.close();
-
+	// Close the file and then return 0
     return 0;
 }
+

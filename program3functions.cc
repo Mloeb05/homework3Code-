@@ -26,3 +26,15 @@ int findMin(int count[])
     }
     return count[min];
 }
+int findNumChars(int max, int count[])
+{
+    int numChars = 0;
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == max)
+        {
+            numChars++;
+        }
+    }
+    return numChars;
+}

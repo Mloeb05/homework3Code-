@@ -1,10 +1,5 @@
-The input file reads as follows:
-
-
-
-Highest frequency character (appeared 11 times in the file): file): 
-Lowest frequency characters (appeared 1 time in the file): cjkqvxz
-
+Highest frequency characters (appeared 11 times in the file): e, o
+Lowest frequency characters (appeared 1 time(s) in the file): c, j, k, q, v, x, and z
 a: 4
 b: 2
 c: 1
