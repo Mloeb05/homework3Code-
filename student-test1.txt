@@ -1,0 +1,30 @@
+The input file reads as follows:
+
+
+
+Highest frequency character (appeared 6 times in the file): st frequency characters (appeared 
+Lowest frequency characters (appeared 0 time in the file): bcdjkqvwxyz
+
+a: 2
+e: 5
+f: 3
+g: 3
+h: 1
+i: 5
+l: 1
+m: 3
+n: 4
+o: 2
+p: 2
+r: 5
+s: 4
+t: 6
+u: 1
+
+ 6                                       *             
+ 5         *       *                 *   *             
+ 4         *       *         *       * * *             
+ 3         * * *   *       * *       * * *             
+ 2 *       * * *   *       * * * *   * * *             
+ 1 *       * * * * *     * * * * *   * * * *           
+   a b c d e f g h i j k l m n o p q r s t u v w x y z 
