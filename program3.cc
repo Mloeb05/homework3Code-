@@ -34,19 +34,29 @@ int main(int argc, char *argv[])
     int min = findMin(count);
 
     // Output highest frequency characters
-    cout << "Highest frequency characters (appeared " << max << " times in the file): ";
-    int numMax = 0;
+    cout << "Highest frequency character is " << max << endl;
+    int lastMaxIndex = -1;
     for (int i = 0; i < 26; i++)
     {
-        if (count[i] == max )
+        if (count[i] == max)
         {
-            numMax++;
-            cout << (char)(i + 'a') ;
-            if (numMax < findNumChars(max, count))
-        {
-            cout << ", ";
+            lastMaxIndex = i;
         }
-        } 
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        if (count[i] == max)
+        {
+            if (i == lastMaxIndex && i != 0)
+            {
+                cout << "and ";
+            }
+            cout << (char)(i + 'a');
+            if (i != lastMaxIndex)
+            {
+                cout << ", ";
+            }
+        }
     }
     cout << endl;
 

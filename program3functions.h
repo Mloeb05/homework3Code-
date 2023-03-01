@@ -4,6 +4,5 @@
 // Function prototypes
 int findMax(int count[]);
 int findMin(int count[]);
-int findNumChars(int max, int count[]);
 
 #endif
